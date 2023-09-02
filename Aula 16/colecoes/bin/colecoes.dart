@@ -58,80 +58,120 @@ void main() {
   //   print(entry.key);
   //   print(entry.value);
   // }
-  var id = 1;
-  void criarContato(Map listaContatos, int id) {
-    print('\nDigite o nome do novo contato:');
-    var nomeContato = stdin.readLineSync()!;
-    print('\nDigite o número do novo contato:');
-    var numeroContato = stdin.readLineSync()!;
-    Map<String, String> contato = {
-      "Nome": nomeContato,
-      "Numero": numeroContato
-    };
-    Map contatoPronto = {id: contato};
-    listaContatos.addAll(contatoPronto);
-  }
 
-  void atualizarContato(Map listaContatos) {
-    print('\nDigite o nome do contato que deseja atualizar o número!');
-    var nomeContato = stdin.readLineSync()!;
-    print('\nDigite o novo número do contato!');
-    var novoNumero = stdin.readLineSync()!;
-    var entries = listaContatos.entries;
-    for (final entry in entries) {
-      if (nomeContato == entry.value['Nome']) {
-        entry.value['Numero'] = novoNumero;
-      }
-    }
-  }
+  //******************************************************************** */
+  // Começo da lista de contatos
+  // var id = 1;
+  // void criarContato(Map listaContatos, int id) {
+  //   print('\nDigite o nome do novo contato:');
+  //   var nomeContato = stdin.readLineSync()!;
+  //   print('\nDigite o número do novo contato:');
+  //   var numeroContato = stdin.readLineSync()!;
+  //   Map<String, String> contato = {
+  //     "Nome": nomeContato,
+  //     "Numero": numeroContato
+  //   };
+  //   Map contatoPronto = {id: contato};
+  //   listaContatos.addAll(contatoPronto);
+  // }
 
-  void deletarContato(Map listaContatos) {
-    print('\nDigite o nome do contato que deseja deletar!');
-    var nomeContato = stdin.readLineSync()!;
-    var entries = listaContatos.entries;
-    var keyContato = 0;
-    for (final entry in entries) {
-      if (nomeContato == entry.value['Nome']) {
-        keyContato = entry.key;
-      }
-    }
-    listaContatos.remove(keyContato);
-  }
+  // void atualizarContato(Map listaContatos) {
+  //   print('\nDigite o nome do contato que deseja atualizar o número!');
+  //   var nomeContato = stdin.readLineSync()!;
+  //   print('\nDigite o novo número do contato!');
+  //   var novoNumero = stdin.readLineSync()!;
+  //   var entries = listaContatos.entries;
+  //   for (final entry in entries) {
+  //     if (nomeContato == entry.value['Nome']) {
+  //       entry.value['Numero'] = novoNumero;
+  //     }
+  //   }
+  // }
 
-  // Lista de contatos
-  Map listaContatos = {};
-  for (;;) {
-    print(
-        "\n\tEscolha uma ação:\n\n\t1. Verificar Contato\n\t2. Adicionar Contato\n\t3. Atualizar Contato\n\t4. Deletar Contato\n\t5. Sair");
-    var opcao = int.parse(stdin.readLineSync()!);
-    if (opcao == 5) {
-      exit(10);
-    } else {
-      switch (opcao) {
-        case == 1:
-          print("**********************************");
-          print("\tID\tNome\tNúmero\n");
-          var entries = listaContatos.entries;
-          for (final entry in entries) {
-            var chave = entry.key;
-            var nome = entry.value['Nome'];
-            var numero = entry.value['Numero'];
-            // print(entry.value['Nome']);
-            print("\t$chave\t$nome\t$numero");
-          }
-          print("**********************************");
-          break;
-        case == 2:
-          criarContato(listaContatos, id);
-          id++;
-          break;
-        case == 3:
-          atualizarContato(listaContatos);
-          break;
-        case == 4:
-          deletarContato(listaContatos);
-          break;
-      }
-    }
-  }
+  // void deletarContato(Map listaContatos) {
+  //   print('\nDigite o nome do contato que deseja deletar!');
+  //   var nomeContato = stdin.readLineSync()!;
+  //   var entries = listaContatos.entries;
+  //   var keyContato = 0;
+  //   for (final entry in entries) {
+  //     if (nomeContato == entry.value['Nome']) {
+  //       keyContato = entry.key;
+  //     }
+  //   }
+  //   listaContatos.remove(keyContato);
+  // }
+
+  // Map listaContatos = {};
+  // for (;;) {
+  //   print(
+  //       "\n\tEscolha uma ação:\n\n\t1. Verificar Contato\n\t2. Adicionar Contato\n\t3. Atualizar Contato\n\t4. Deletar Contato\n\t5. Sair");
+  //   var opcao = int.parse(stdin.readLineSync()!);
+  //   if (opcao == 5) {
+  //     exit(10);
+  //   } else {
+  //     switch (opcao) {
+  //       case == 1:
+  //         print("**********************************");
+  //         print("\tID\tNome\tNúmero\n");
+  //         var entries = listaContatos.entries;
+  //         for (final entry in entries) {
+  //           var chave = entry.key;
+  //           var nome = entry.value['Nome'];
+  //           var numero = entry.value['Numero'];
+  //           // print(entry.value['Nome']);
+  //           print("\t$chave\t$nome\t$numero");
+  //         }
+  //         print("**********************************");
+  //         break;
+  //       case == 2:
+  //         criarContato(listaContatos, id);
+  //         id++;
+  //         break;
+  //       case == 3:
+  //         atualizarContato(listaContatos);
+  //         break;
+  //       case == 4:
+  //         deletarContato(listaContatos);
+  //         break;
+  //     }
+  //   }
+  // }
+//************************************************************************** */
+  // Collection-for
+  var nomes1 = ['Ana', 'Pedro'];
+  var nomes2 = [
+    'Cristina',
+    'João',
+    for (final nome in nomes1) nome,
+  ];
+  print(nomes2);
+  var nomes3 = [
+    'Ana Maria',
+    ...nomes1, // Operador Spread,
+    ...nomes2,
+  ];
+
+  // Collection-if
+  var idadePedro = 17;
+  var idadeMaria = 19;
+  var idadeJoao = 22;
+  var somenteDeMaior = [
+    'Cristina',
+    if (idadePedro >= 18) 'Pedro' else 'nada',
+    if (idadeMaria >= 18) 'Maria' else 'nada',
+    idadeJoao >= 18 ? 'Joao' : 'nada',
+  ];
+  // Mapa dentro de mapa
+  var filme = {
+    'titulo': 'Titanic',
+    'genero': 'Romance',
+    'notas': [5, 1, 2, 5]
+  };
+  var filme2 = {
+    'titulo': 'Star Wars',
+    'genero': 'Ficção Científica',
+    'notas': [5, 5]
+  };
+  var filmes = [filme, filme2];
+  print(filmes);
 }
