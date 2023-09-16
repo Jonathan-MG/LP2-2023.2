@@ -17,4 +17,6 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Executar
 
+- plutter upgrade
 - flutter pub get
+- fluuter pub add http
