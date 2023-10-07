@@ -11,8 +11,7 @@ class ImageList extends StatelessWidget {
     return ListView.builder(
       itemCount: imagens.length,
       itemBuilder: (BuildContext context, int index) {
-        // Exibir o alt, caso o elemento esteja em uma posição par e exibir a url caso contrário, use o operador ternário para decidir
-        return Text(index.isEven ? imagens[index].alt : imagens[index].url);
+        return Image.network(imagens[index].url);
       },
     );
   }
