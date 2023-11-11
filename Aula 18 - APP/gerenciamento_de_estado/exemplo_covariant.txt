@@ -1,0 +1,67 @@
+abstract class Animal{
+  final _amigos = [];
+  final nome;
+ 
+  Animal(this.nome); // constructor(private nome: string){}
+  
+  void fazerAmizade(Animal a);
+  
+  void adicionar(Animal a){
+    _amigos.add(a);
+  }
+
+  String toString(){
+    return nome;
+  }
+  
+  void exibir(){
+    print(_amigos);
+  }
+}
+
+class Cachorro extends Animal{
+  Cachorro(super.nome);
+  @override
+  void fazerAmizade(Animal a){
+    adicionar(a);
+  }
+}
+
+class Papagaio extends Animal{
+  Papagaio(super.nome);
+  @override
+  void fazerAmizade(Animal a){
+    adicionar(a);
+  }
+}
+
+class Gato extends Animal{
+  Gato(super.nome);
+  @override
+  void fazerAmizade(covariant Gato a){
+    adicionar(a);
+  }
+}
+
+
+
+void main(){
+  final c1 = Cachorro('Odie');
+  final c2 = Cachorro('Olie');
+  final p1 = Papagaio('Zulu');
+  final p2 = Papagaio('Lola');
+  
+  c1.fazerAmizade(p2);
+  c1.fazerAmizade(c2);
+  p1.fazerAmizade(c2);
+  p1.fazerAmizade(p2);
+  
+  c1.exibir();
+  p1.exibir();
+  
+  var g1 = Gato('Garfield');
+  var g2 = Gato('Gato2');
+  g1.fazerAmizade(g2);
+  g1.exibir();
+     
+}
