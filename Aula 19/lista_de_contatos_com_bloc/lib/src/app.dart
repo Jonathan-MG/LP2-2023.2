@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:lista_de_contatos_com_bloc/src/widgets/contato_widget.dart';
+import 'package:lista_de_contatos_com_bloc/src/blocs/provider.dart';
+import 'package:lista_de_contatos_com_bloc/src/widgets/contatos_widget.dart';
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Contatos",
-      theme: ThemeData(
-        primarySwatch: Colors.blue
-      ),
-      home: Scaffold(
-        body: ContatoWidget('José Santos', '(11) 91122-3344'),
-      ),
-    );
+    return Provider(
+        child: MaterialApp(
+            title: "Contatos", home: Scaffold(body: ContatosWidget())));
   }
 }
